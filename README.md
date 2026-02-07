@@ -4,44 +4,32 @@
 
 ---
 
-## Содержание
+## Сетап
 
-* [Быстрый старт](#быстрый-старт)
-* [Переменные окружения](#переменные-окружения)
-* [Краткое описание ноутбуков](#краткое-описание-ноутбуков)
-* [Планы/идеи](#планыидеи)
----
-
-## Быстрый старт
-
-1. **Python**: 3.10+ (рекомендуется 3.10–3.12).
-2. **Создайте окружение** и поставьте зависимости:
+1. Python: 3.10+.
+2. Создайте окружение и поставьте зависимости:
 
 ```bash
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install --upgrade pip
 pip install jupyter ipykernel
 python -m ipykernel install --user --name=langchain-apps
+pip install "langchain>=0.3" "langchain-core>=0.3" "langchain-community>=0.3" "python-dotenv"
 
-# Базовые пакеты LangChain
-pip install "langchain>=0.3" "langchain-core>=0.3" "langchain-community>=0.3"
-
-# Провайдер модели (пример: MistralAI)
-pip install "langchain-mistralai" "python-dotenv"
+# Провайдер модели (здесь Mistral)
+pip install "langchain-mistralai"
 
 ```
 
-3. **API‑ключи** положите в `.env` (см. ниже).
-4. Откройте ноутбук: `jupyter notebook` → любой `*.ipynb`.
+3. Заполните `.env` соответствующим API-ключом.
 
 ---
 
 ## Переменные окружения
 
-Создайте файл `.env` в корне репозитория:
+`.env` в корне репозитория для Mistral:
 
 ```env
-# MistralAI (пример)
 MISTRALAI_API_KEY=...
 ```
 
@@ -59,16 +47,3 @@ MISTRALAI_API_KEY=...
 * **writer.ipynb** — генератор статей/заметок: гайдлайны стиля, тема → поиск материала → план → написание. Обернут в телеграм бота.
 
 > `Molmo.pdf` можно использовать как тестовый документ для RAG/поиска.
-
----
-
-## Планы/идеи
-
-* Добавить примеры с **Azure OpenAI / Anthropic / Google**.
-* Показать RAG с **rerankers** и «source‑grounded» промптами.
-* Мини‑демо **многошагового агента** на LangGraph.
-* Нотбук с **эвалюацией** (точность/полезность/цитирование) и LangSmith‑трейсами.
-
-PR‑ы и ишьюсы приветствуются 🙌
-
----
